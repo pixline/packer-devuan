@@ -1,0 +1,85 @@
+{
+  "description": "Devuan ASCII packer script",
+  "variables": {
+      "box_version": "0.1",
+      "box_changelog": "None yet"
+    },
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "boot_command": [
+        "<esc><wait>",
+        "install <wait>",
+        "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/devuan.cfg <wait>",
+        "debian-installer=en_US <wait>",
+        "auto <wait>",
+        "locale=en_US <wait>",
+        "kbd-chooser/method=en <wait>",
+        "netcfg/get_hostname={{ .Name }} <wait>",
+        "netcfg/get_domain=local <wait>",
+        "fb=false <wait>",
+        "debconf/frontend=noninteractive <wait>",
+        "console-setup/ask_detect=false <wait>",
+        "console-keymaps-at/keymap=en <wait>",
+        "keyboard-configuration/xkb-keymap=en <wait>",
+        "<enter><wait>"
+      ],
+      "disk_size": "10140",
+      "guest_additions_mode": "disable",
+      "guest_os_type": "Debian_64",
+      "hard_drive_interface": "sata",
+      "headless": true,
+      "http_directory": "http",
+      "iso_checksum": "70c6abe544ec59b0d0882c666ca0377be1b6c218655dac1f61b2c7e88c9b3d9f",
+      "iso_checksum_type": "sha256",
+      "iso_url": "https://files.devuan.org/devuan_jessie/installer-iso/devuan_jessie_1.0.0_amd64_NETINST.iso",
+      "shutdown_command": "sudo /sbin/halt -p",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_port": "22",
+      "ssh_wait_timeout": "1000s",
+      "vm_name": "devuan",
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "1024"],
+        ["modifyvm", "{{.Name}}", "--cpus", "1"]
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "dist/devuan.box",
+      "compression_level": 9,
+      "vagrantfile_template": "Vagrantfile"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "pause_before": "5s",
+      "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
+      "scripts": [
+        "scripts/devuan-ascii.sh"
+      ]
+    },
+    {
+      "type": "shell",
+      "pause_before": "30s",
+      "expect_disconnect": true,
+      "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
+      "scripts": [
+        "scripts/vagrant.sh",
+        "scripts/virtualbox.sh"
+      ]
+    },
+    {
+      "type": "shell",
+      "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
+      "scripts": [
+        "scripts/cleanup.sh",
+        "scripts/minimize.sh"
+      ]
+    }
+  ]
+}
+
