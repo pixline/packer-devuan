@@ -19,9 +19,6 @@ chsh -s /usr/bin/zsh vagrant
 # ugly hack to avoid zsh compinit errors... looking for a better fix.
 sed -i -e 's/exit 0/chmod 755 \/usr\/local\/share\/zsh\/site-functions; exit 0/g' /etc/rc.local
 
-cat << MOTD > /etc/motd
-Welcome to Devuan ASCII
+echo '' > /etc/motd
 
-MOTD
-
-echo 'END'
+echo 'Vagrant: done'

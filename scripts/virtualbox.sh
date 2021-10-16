@@ -15,4 +15,4 @@ rm -f $VBOX_ISO
 
 service vboxadd start
 
-echo 'END'
+echo 'VBox: done'

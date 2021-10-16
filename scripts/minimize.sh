@@ -1,5 +1,3 @@
-export DEBIAN_FRONTEND=noninteractive
-
 #!/bin/sh -eux
 #Copyright 2012-2014, Chef Software, Inc. (<legal@chef.io>)
 #Copyright 2011-2012, Tim Dysinger (<tim@dysinger.net>)
@@ -16,6 +14,8 @@ export DEBIAN_FRONTEND=noninteractive
 #See the License for the specific language governing permissions and
 #limitations under the License.
 
+export DEBIAN_FRONTEND=noninteractive
+
 echo "Fill with 0 the swap partition to reduce box size"
 readonly swapuuid=$(/sbin/blkid -o value -l -s UUID -t TYPE=swap)
 readonly swappart=$(readlink -f /dev/disk/by-uuid/"$swapuuid")
@@ -30,4 +30,4 @@ rm -f /EMPTY
 # will try to kill the box while the disk is still full and that's bad
 sync
 
-echo 'END'
+echo 'Minimize: done'
