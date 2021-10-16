@@ -27,7 +27,6 @@ source "virtualbox-iso" "devuan" {
   ]
 }
 
-
 build {
   sources = ["sources.virtualbox-iso.devuan"]
 
@@ -36,6 +35,7 @@ build {
     scripts = [
       "scripts/apt.sh",
       "scripts/vagrant.sh",
+      "scripts/virtualbox.sh",      
       "scripts/cleanup.sh",
       "scripts/minimize.sh"
     ]

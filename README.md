@@ -5,14 +5,14 @@ This [Packer](https://www.packer.io/) template is intended to be a starting poin
 ## Highlights:
 
 * Final image size: ~470MB
-* Guest additions already installed
+* VBox Guest Additions 
 * Usable shell setup: ([Zsh](http://www.zsh.org/) with [GRML.org zshrc](http://git.grml.org/f/grml-etc-core/etc/zsh/zshrc))
 * No systemd! :grin:
 
 ## Requirements ( = tested with )
 
 * Packer >= 1.7.0
-* VirtualBox >= 6.0
+* VirtualBox >= 6.1
 * Vagrant >= 2.2.14
 
 ## Usage
