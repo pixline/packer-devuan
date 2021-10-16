@@ -1,23 +1,23 @@
 # Devuan 4.0 (Chimaera) packer template
 
-This [Packer](https://www.packer.io/) template is intended to be a starting point for a minimal custom [Devuan 4.0 (Chimaera)](https://devuan.org/) vagrant box. 
+This Packer template is intended to be a starting point for a minimal custom [Devuan 4.0 (Chimaera)](https://devuan.org/) vagrant box. 
 
 ## Highlights:
 
-* Final image size: ~470MB
+* Final image size: ~440MB
 * VBox Guest Additions 
 * Usable shell setup: ([Zsh](http://www.zsh.org/) with [GRML.org zshrc](http://git.grml.org/f/grml-etc-core/etc/zsh/zshrc))
 * No systemd! :grin:
 
 ## Requirements ( = tested with )
 
-* Packer >= 1.7.0
-* VirtualBox >= 6.1
-* Vagrant >= 2.2.14
+* [Packer](https://www.packer.io/) >= 1.7.0
+* [VirtualBox](https://www.virtualbox.org/) >= 6.1
+* [Vagrant](https://www.vagrantup.com/) >= 2.2.14
 
 ## Usage
-
 ```
+packer init
 packer build devuan.pkr.hcl
 vagrant up
 ```

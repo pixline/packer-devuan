@@ -2,10 +2,15 @@ export DEBIAN_FRONTEND=noninteractive
 
 chmod -R 755 /usr/local/share/zsh/site-functions
 
-apt-get --yes purge avahi-autoipd bluez bluetooth \
+apt-get --yes purge adwaita-icon-theme \
+    avahi-autoipd bluez bluetooth \
     debian-reference-common debian-reference-it \
-    doc-debian debian-faq eject fortune-mod \
-    fortunes-it iw laptop-detect libwayland-egl1 \
+    dictionaries-common doc-debian debian-faq \
+    eject emacsen-common fortune-mod \
+    fontconfig fontconfig-config fonts-dejavu-core \
+    fortunes-it iw laptop-detect \
+    libnl-3-200:amd64 libgdk-pixbuf-2.0-0:amd64 \
+    libgtk-3-common libwayland-egl1 \
     linux-headers-5.10.0-9-amd64 make \
     manpages manpages-it maint-guide-it make \
     powertop patch task-laptop telnet wpasupplicant \
